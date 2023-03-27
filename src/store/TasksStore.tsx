@@ -7,7 +7,7 @@ const initialState = {
       title: 'Wash the dishes',
       dir: 'Home',
       description: 'This is the description for this task.',
-      date: '2022-14-08',
+      date: '2022-08-08',
       completed: false,
       important: false,
       id: 'dY7aN'
@@ -16,25 +16,25 @@ const initialState = {
       title: 'Do homework',
       dir: 'School',
       description: 'This is the description for this task.',
-      date: '2022-15-08',
+      date: '2022-10-08',
       completed: true,
       important: true,
       id: 'hYsk8'
     },
     {
-      title: 'Wash the dishes',
+      title: 'Check emails',
       dir: 'School',
       description: 'This is the description for this task.',
-      date: '2022-15-08',
+      date: '2022-06-08',
       completed: true,
       important: false,
       id: 'hd5aS'
     },
     {
-      title: 'Wash the dishes',
+      title: 'Go shopping',
       dir: 'School',
       description: 'This is the description for this task.',
-      date: '2022-15-08',
+      date: '2022-09-08',
       completed: true,
       important: false,
       id: 'hdg9M'

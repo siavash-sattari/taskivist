@@ -4,10 +4,11 @@ import { ViewIcon1, ViewIcon2 } from '../icons';
 type Props = {
   isListInView1: boolean;
   setIsListInView1: (status: boolean) => void;
+  sortedBy: string;
+  setSortedBy: (option: string) => void;
 };
 
-const ButtonsSort: React.FC<Props> = ({ isListInView1, setIsListInView1 }) => {
-  const [sortedBy, setSortedBy] = useState('');
+const ButtonsSort: React.FC<Props> = ({ isListInView1, setIsListInView1, sortedBy, setSortedBy }) => {
 
   return (
     <div className='flex children-styles'>
