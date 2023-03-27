@@ -3,6 +3,7 @@ import Menu from './components/Menu';
 import TasksSection from './components/TasksSection';
 import AccountData from './components/AccountData';
 import Modal from './components/Modal';
+import Footer from './components/Footer';
 import { useAppSelector } from './store/hooks';
 
 const App: React.FC = () => {
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       {isModalOpen && <Modal />}
       <Menu />
       <TasksSection />
+      <Footer />
       <AccountData />
     </div>
   );

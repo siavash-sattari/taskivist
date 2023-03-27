@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ViewIcon1, ViewIcon2 } from '../icons';
 
 type Props = {
@@ -9,7 +9,6 @@ type Props = {
 };
 
 const ButtonsSort: React.FC<Props> = ({ isListInView1, setIsListInView1, sortedBy, setSortedBy }) => {
-
   return (
     <div className='flex children-styles'>
       <button onClick={() => setIsListInView1(true)}>

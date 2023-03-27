@@ -16,12 +16,12 @@ const TaskItem: React.FC<{ isListInView1: boolean; task: Task }> = ({ isListInVi
     dispatch(tasksActions.removeTask(id));
   };
 
-  const fullDate: Date = new Date(task.date);
-  const month: number = fullDate.getMonth();
+  const fullDate: Date = new Date(task.date.replaceAll('-', '/'));
+  const month: number = fullDate.getMonth() + 1;
   const day: number = fullDate.getDate();
   const year: number = fullDate.getFullYear();
 
-  const dateFormated: string = month + "/" + day + "/" + year;
+  const dateFormated: string = month + '/' + day + '/' + year;
 
   return (
     <li key={task.id}>
