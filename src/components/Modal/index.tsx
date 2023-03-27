@@ -62,8 +62,8 @@ const ModalContent: React.FC = () => {
   return (
     <>
       <div className='fixed bg-slate-600/[.2] w-full h-full z-10 grid place-items-center px-2' onClick={closeModalHandler}>
-        <section className=' bg-slate-200 max-w-lg w-full rounded-lg p-5 flex flex-col justify-start'>
-          <h2 className='font-medium mb-5 text-2xl text-slate-600'>Add a task</h2>
+        <section className='bg-slate-200 max-w-lg w-full rounded-lg p-5 flex flex-col justify-start dark:bg-slate-900'>
+          <h2 className='font-medium mb-5 text-2xl text-slate-600 dark:text-slate-200'>Add a task</h2>
           <form className='flex flex-col stylesInputsField' onSubmit={addNewTaskHandler}>
             <label>
               Title

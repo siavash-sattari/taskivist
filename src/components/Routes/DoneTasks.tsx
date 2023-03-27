@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Task } from '../../interfaces';
 import LayoutRoutes from '../LayoutRoutes';
 import { useAppSelector } from '../../store/hooks';
+import useCompletedTasks from '../../hooks/useCompletedTasks';
 
 type Props = {
   done: boolean;
@@ -10,19 +9,7 @@ type Props = {
 
 const DoneTasks: React.FC<Props> = ({ done, title }) => {
   const tasks = useAppSelector(state => state.tasks.tasks);
-
-  const [tasksDone, setTasksDone] = useState<Task[]>([]);
-
-  useEffect(() => {
-    const filteredTasks: Task[] = tasks.filter((task: Task) => {
-      if (done) {
-        return task.completed;
-      } else {
-        return !task.completed;
-      }
-    });
-    setTasksDone(filteredTasks);
-  }, [tasks, done]);
+  const tasksDone = useCompletedTasks({ tasks, done });
 
   return <LayoutRoutes title={title} tasks={tasksDone}></LayoutRoutes>;
 };

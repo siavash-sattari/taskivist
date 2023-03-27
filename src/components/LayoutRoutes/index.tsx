@@ -84,7 +84,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
 
   return (
     <section>
-      <h1 className='font-medium my-8 text-2xl'>
+      <h1 className='font-medium my-8 text-2xl dark:text-slate-200'>
         {title} ({tasks.length} tasks)
       </h1>
       <ButtonsSort isListInView1={isListInView1} setIsListInView1={setIsListInView1} sortedBy={sortedBy} setSortedBy={setSortedBy} />
@@ -95,7 +95,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
         <li>
           <button
             onClick={openModalHandler}
-            className={`border-2 border-slate-300 text-slate-400 w-full rounded-lg border-dashed transition hover:bg-slate-300 ${
+            className={`border-2 border-slate-300 text-slate-400 w-full rounded-lg border-dashed transition hover:bg-slate-300 hover:text-slate-500 dark:border-slate-700 dark:hover:bg-slate-800 ${
               isListInView1 ? 'h-32' : 'h-64'
             }`}>
             Add new task

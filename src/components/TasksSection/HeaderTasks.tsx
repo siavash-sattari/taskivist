@@ -41,7 +41,7 @@ const HeaderTasks: React.FC = () => {
       <div className='flex flex-1'>
         <Tooltip txt='see notifications' className='mr-6 ml-auto'>
           <button className={`relative ${classHasNotification}`} title='notifications'>
-            <BellIcon className='fill-violet-600 w-6 h-6' />
+            <BellIcon className='fill-violet-600 w-6 h-6 dark:fill-violet-800' />
           </button>
         </Tooltip>
         <BtnAddTask />

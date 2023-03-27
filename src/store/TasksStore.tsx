@@ -38,6 +38,42 @@ const initialState = {
       completed: true,
       important: false,
       id: 'hdg9M'
+    },
+    {
+      title: 'Study',
+      dir: 'School',
+      description: 'This is the description for this task.',
+      date: '2022-10-06',
+      completed: true,
+      important: false,
+      id: 'fkd8s'
+    },
+    {
+      title: 'Study english',
+      dir: 'School',
+      description: 'This is the description for this task.',
+      date: '2022-10-28',
+      completed: true,
+      important: false,
+      id: 'f9aKD'
+    },
+    {
+      title: 'Fix the TV',
+      dir: 'School',
+      description: 'This is the description for this task.',
+      date: '2022-10-18',
+      completed: false,
+      important: false,
+      id: 'dhsD1'
+    },
+    {
+      title: 'Study',
+      dir: 'School',
+      description: 'This is the description for this task.',
+      date: '2022-12-01',
+      completed: false,
+      important: false,
+      id: 'dhsD1'
     }
   ]
 };
@@ -56,6 +92,9 @@ const tasksSlice = createSlice({
     markAsImportant(state, action: PayloadAction<string>) {
       const newTaskFavorited = state.tasks.find(task => task.id === action.payload);
       newTaskFavorited!.important = !newTaskFavorited!.important;
+    },
+    deleteAllTasks(state) {
+      state.tasks = [];
     }
   }
 });
