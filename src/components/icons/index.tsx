@@ -11,3 +11,5 @@ export { SortAlphaDownIcon } from './SortAlphaDown';
 export { SortNumberDownIcon } from './SortNumberDown';
 export { StarLineIcon } from './StarLine';
 export { TrashIcon } from './Trash';
+export { ViewIcon1 } from './View1';
+export { ViewIcon2 } from './View2';
