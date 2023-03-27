@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import BtnAddTask from '../BtnAddTask';
 
 const links = [
   {
-    name: "Today's mortaz",
+    name: "Today's tasks",
     path: '/today'
   },
   {
@@ -25,18 +25,23 @@ const links = [
   }
 ];
 
-const classLinkActive = 'text-rose-600 hover:border-l-4 border-current hover:pl-2';
+const classLinkActive = 'text-rose-600 bg-violet-100 border-r-4 border-rose-400';
 
 const Menu: React.FC = () => {
+  const route = useLocation();
+  const currentPath = route.pathname;
+
   return (
-    <header className='p-5 bg-slate-100 flex flex-col col-span-2 h-screen'>
-      <h1 className='font-bold uppercase text-center mt-4 text-lg tracking-wide'>To-do list</h1>
-      <BtnAddTask className='my-8' />
+    <header className='bg-slate-100 flex flex-col col-span-2 h-screen'>
+      <h1 className='font-bold uppercase text-center mt-8 text-lg tracking-wide'>To-do list</h1>
+      <BtnAddTask className='my-8 mx-4' />
       <nav>
-        <ul className='grid gap-4'>
+        <ul className='grid gap-2'>
           {links.map(link => (
-            <li>
-              <NavLink to={link.path} className={({ isActive }) => (isActive ? classLinkActive : '')}>
+            <li key={link.path}>
+              <NavLink
+                to={link.path}
+                className={`px-4 py-2 w-full block transition hover:text-rose-600 ${currentPath === link.path ? classLinkActive : ''}`}>
                 {link.name}
               </NavLink>
             </li>
