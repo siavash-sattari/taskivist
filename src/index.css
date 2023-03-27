@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .tasksList > li:first-of-type button:last-of-type {
+    @apply bg-violet-600 text-slate-100;
+  }
+  .tasksList > li:first-of-type button:last-of-type .description {
+    @apply text-violet-300;
+  }
+  .tasksList > li:first-of-type button:last-of-type > div {
+    @apply border-violet-500;
+  }
+  .children-styles {
+    @apply text-slate-400;
+  }
+  .children-styles button {
+    @apply p-1;
+  }
+  .children-styles svg {
+    @apply w-6 h-6;
+  }
+}
