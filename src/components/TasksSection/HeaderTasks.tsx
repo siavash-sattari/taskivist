@@ -5,7 +5,7 @@ import { BellIcon, MenuIcon } from '../icons';
 import SearchField from './SearchField';
 import useVisibility from '../../hooks/useVisibility';
 import { useAppDispatch } from '../../store/hooks';
-import { menuActions } from '../../store/MenuStore';
+import { menusActions } from '../../store/MenuStore';
 
 const classHasNotification =
   "after:content-[''] after:w-2 after:h-2 after:bg-rose-500 block after:rounded-full after:absolute after:bottom-3/4  after:left-3/4";
@@ -41,13 +41,16 @@ const HeaderTasks: React.FC = () => {
 
   const { elementIsVisible: notificationIsVisible, showElement: showNotifications } = useVisibility([refBtnNotification.current]);
 
-  const openMenuHandler = () => {
-    dispatch(menuActions.openMenu());
+  const openMenuHeaderHandler = () => {
+    dispatch(menusActions.openMenuHeader());
+  };
+  const openMenuAccountHandler = () => {
+    dispatch(menusActions.openMenuAccount());
   };
 
   return (
     <header className='flex items-center'>
-      <button className='mr-6' onClick={openMenuHandler}>
+      <button className='mr-6' onClick={openMenuHeaderHandler}>
         <MenuIcon />
       </button>
       <SearchField />
@@ -69,6 +72,9 @@ const HeaderTasks: React.FC = () => {
           )}
         </div>
         <BtnAddTask />
+        <button onClick={openMenuAccountHandler}>
+          <img src={require('../../assets/avatar.jpeg')} alt='cat' className='w-10 h-10 rounded-full ml-4' />
+        </button>
       </div>
     </header>
   );

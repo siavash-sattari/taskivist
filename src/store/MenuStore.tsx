@@ -1,22 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  open: false
+  menuHeaderOpened: false,
+  menuAccountOpened: false
 };
 
-const menuSlice = createSlice({
+const menusSlice = createSlice({
   name: 'modal',
   initialState: initialState,
   reducers: {
-    openMenu(state) {
-      state.open = true;
+    openMenuHeader(state) {
+      state.menuHeaderOpened = true;
     },
-    closeMenu(state) {
-      state.open = false;
+    closeMenuHeader(state) {
+      state.menuHeaderOpened = false;
+    },
+    openMenuAccount(state) {
+      state.menuAccountOpened = true;
+    },
+    closeMenuAccount(state) {
+      state.menuAccountOpened = false;
     }
   }
 });
 
-export const menuActions = menuSlice.actions;
+export const menusActions = menusSlice.actions;
 
-export default menuSlice.reducer;
+export default menusSlice.reducer;
