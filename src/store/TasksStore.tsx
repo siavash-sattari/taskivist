@@ -113,6 +113,11 @@ const tasksSlice = createSlice({
       const directoryAlreadyExists = state.directories.includes(newDirectoryName);
       if (directoryAlreadyExists) return;
       state.directories = [newDirectoryName, ...state.directories];
+    },
+    deleteDirectory(state, action: PayloadAction<string>) {
+      const dirName = action.payload;
+      state.directories = state.directories.filter(dir => dir !== dirName);
+      state.tasks = state.tasks.filter(task => task.dir !== dirName);
     }
   }
 });
