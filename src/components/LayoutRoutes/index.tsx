@@ -73,7 +73,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
     if (sortedBy === 'min-date' || sortedBy === 'max-date') {
       setSortedTasks(sortByDate(sortedBy));
     }
-    if (sortedBy === '') {
+    if (sortedBy === '' || sortedBy === 'order-added') {
       setSortedTasks(tasks);
     }
     if (sortedBy === 'completed-first') {
@@ -86,9 +86,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
 
   return (
     <section>
-      <h1 className='font-medium my-8 text-2xl dark:text-slate-200'>
-        {tasksTitle}
-      </h1>
+      <h1 className='font-medium my-8 text-2xl dark:text-slate-200'>{tasksTitle}</h1>
       <ButtonsSort isListInView1={isListInView1} setIsListInView1={setIsListInView1} sortedBy={sortedBy} setSortedBy={setSortedBy} />
       <ul className={`tasksList mt-4 grid gap-6 ${isListInView1 ? 'grid-cols-1' : 'grid-cols-3 items-end'}`}>
         {sortedTasks.map(task => (

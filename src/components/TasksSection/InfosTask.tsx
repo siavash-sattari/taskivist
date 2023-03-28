@@ -5,17 +5,13 @@ import { useAppDispatch } from '../../store/hooks';
 import { tasksActions } from '../../store/TasksStore';
 import ModalCreateTask from '../Modal/ModalTask';
 import Tooltip from '../Tooltip';
+import useDate from '../../hooks/useDate';
 
 const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({ task, isListInView1 }) => {
   const [modalEditTaskOpen, setModalEditTaskOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
-  const fullDate: Date = new Date(task.date.replaceAll('-', '/'));
-  const month: number = fullDate.getMonth() + 1;
-  const day: number = fullDate.getDate();
-  const year: number = fullDate.getFullYear();
-
-  const dateFormated: string = month.toString().padStart(2, '0') + '/' + day.toString().padStart(2, '0') + '/' + year;
+  const dateFormated = useDate(task.date);
 
   const closeModalEditTask = () => {
     setModalEditTaskOpen(false);
@@ -40,7 +36,7 @@ const InfosTask: React.FC<{ task: Task; isListInView1: boolean }> = ({ task, isL
         </Tooltip>
         {modalEditTaskOpen && <ModalCreateTask onClose={closeModalEditTask} task={task} nameForm='Edit task' onConfirm={editTaskHandler} />}
       </div>
-      <p className='description text-slate-400 dark:text-slate-500'>{task.description}</p>
+      <p className='description text-slate-500 dark:text-slate-500'>{task.description}</p>
       <time className='mt-auto flex w-full'>
         <DateIcon className='mr-2 w-5' /> {dateFormated}
       </time>

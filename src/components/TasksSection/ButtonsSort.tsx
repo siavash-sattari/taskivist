@@ -9,6 +9,7 @@ type Props = {
 };
 
 const sortValues = [
+  { value: "order-added", title: "Order added" },
   { value: 'min-date', title: 'New' },
   { value: 'max-date', title: 'Last' },
   { value: 'completed-first', title: 'Completed first' },

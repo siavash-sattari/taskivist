@@ -76,7 +76,7 @@ const initialState: { tasks: Task[]; directories: string[] } = {
       id: 'dhsD1'
     }
   ],
-  directories: ['Home', 'School']
+  directories: ['Home', 'School', 'Main']
 };
 
 const tasksSlice = createSlice({
@@ -84,7 +84,7 @@ const tasksSlice = createSlice({
   initialState: initialState,
   reducers: {
     addNewTask(state, action: PayloadAction<Task>) {
-      state.tasks = [...state.tasks, action.payload];
+      state.tasks = [action.payload, ...state.tasks];
     },
     removeTask(state, action) {
       const newTasksList = state.tasks.filter(task => task.id !== action.payload);
