@@ -12,6 +12,8 @@ const Directories: React.FC<{ classActive: string }> = ({ classActive }) => {
   const dispatch = useAppDispatch();
 
   const [isDirectoriesOpen, setIsDirectoriesOpen] = useState<boolean>(true);
+  const [errorDirectoryName, setErrorDirectoryName] = useState<boolean>(false);
+
   const directories = useAppSelector(store => store.tasks.directories);
 
   const buttonNewTaskRef = useRef<HTMLButtonElement>(null);
@@ -36,7 +38,18 @@ const Directories: React.FC<{ classActive: string }> = ({ classActive }) => {
       dispatch(tasksActions.createDirectory(newDirectoryName));
     }
 
+    setErrorDirectoryName(false);
     inputRef.current!.value = '';
+  };
+
+  const checkDirNameExists = (val: string) => {
+    const directoryDoesNotExist = directories.every((dir: string) => dir !== val);
+
+    if (directoryDoesNotExist) {
+      setErrorDirectoryName(false);
+    } else {
+      setErrorDirectoryName(true);
+    }
   };
 
   const { elementIsVisible: inputDirIsVisible, showElement: showInputDir } = useVisibility(
@@ -56,12 +69,24 @@ const Directories: React.FC<{ classActive: string }> = ({ classActive }) => {
         <ArrowIcon className={`w-3 h-3 mr-2 rotate-90 transition ${isDirectoriesOpen ? 'rotate-180' : ''}`} />
         Directories
       </button>
-      <div className='isDirectoriesOpen ? "visible" : "hidden"'>
-        <div className='ml-9 my-2 mr-4'>
+      <div className={isDirectoriesOpen ? 'visible' : 'hidden'}>
+        <div className='ml-9 my-2 mr-4 relative'>
           <label htmlFor='dir-name' className='sr-only'>
             Enter a directory name
           </label>
-          <input type='text' className={` inputStyles w-full ${inputDirIsVisible ? 'visible' : 'hidden'}`} id='dir-name' autoFocus ref={inputRef} />
+          <input
+            type='text'
+            className={` inputStyles w-full ${inputDirIsVisible ? 'visible' : 'hidden'}`}
+            id='dir-name'
+            autoFocus
+            ref={inputRef}
+            onInput={({ currentTarget }) => checkDirNameExists(currentTarget.value)}
+          />
+          {errorDirectoryName && (
+            <div className='absolute bg-rose-500 text-slate-200 rounded-md p-2 top-full text-sm w-full font-medium'>
+              Directory name already exists
+            </div>
+          )}
         </div>
 
         <ul className='max-h-36 overflow-auto'>
