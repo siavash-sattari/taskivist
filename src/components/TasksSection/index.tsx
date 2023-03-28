@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from '../Routes/Home';
 import DoneTasks from '../Routes/DoneTasks';
 import TodaysTasks from '../Routes/TodaysTasks';
@@ -20,6 +20,7 @@ const TasksSection: React.FC = () => {
         <Route path='/upcoming' element={<DoneTasks done={false} title='Uncompleted tasks' />} />
         <Route path='/results' element={<SearchResults />} />
         <Route path='/:dir' element={<Directory />} />
+        <Route path='*' element={<Navigate to='' />} />
       </Routes>
     </main>
   );
