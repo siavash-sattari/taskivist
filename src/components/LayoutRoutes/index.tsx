@@ -18,7 +18,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
   const dispatch = useAppDispatch();
 
   const openModalHandler = () => {
-    dispatch(modalActions.openModalHandler());
+    dispatch(modalActions.openModalCreateTask());
   };
 
   const tasksTitle = `${title} (${tasks.length} ${tasks.length === 1 ? 'task' : 'tasks'})`;
