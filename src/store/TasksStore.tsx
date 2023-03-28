@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Task } from '../interfaces';
 
-const initialState = {
+const initialState: { tasks: Task[]; directories: string[] } = {
   tasks: [
     {
       title: 'Wash the dishes',
@@ -75,7 +75,8 @@ const initialState = {
       important: false,
       id: 'dhsD1'
     }
-  ]
+  ],
+  directories: ['Home', 'School']
 };
 
 const tasksSlice = createSlice({
@@ -95,6 +96,12 @@ const tasksSlice = createSlice({
     },
     deleteAllTasks(state) {
       state.tasks = [];
+    },
+    createDirectory(state, action: PayloadAction<string>) {
+      const newDirectoryName: string = action.payload;
+      const directoryAlreadyExists = state.directories.includes(newDirectoryName);
+      if (directoryAlreadyExists) return;
+      state.directories = [...state.directories, newDirectoryName];
     }
   }
 });
