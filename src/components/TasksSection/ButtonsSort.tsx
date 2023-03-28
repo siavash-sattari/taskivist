@@ -8,6 +8,13 @@ type Props = {
   setSortedBy: (option: string) => void;
 };
 
+const sortValues = [
+  { value: 'min-date', title: 'New' },
+  { value: 'max-date', title: 'Last' },
+  { value: 'completed-first', title: 'Completed first' },
+  { value: 'uncompleted-first', title: 'Uncompleted first' }
+];
+
 const ButtonsSort: React.FC<Props> = ({ isListInView1, setIsListInView1, sortedBy, setSortedBy }) => {
   return (
     <div className='flex children-styles'>
@@ -21,10 +28,11 @@ const ButtonsSort: React.FC<Props> = ({ isListInView1, setIsListInView1, sortedB
         <option value='' disabled>
           Sort by
         </option>
-        <option value='min-date'>New</option>
-        <option value='max-date'>Last</option>
-        <option value='completed-first'>Completed first</option>
-        <option value='uncompleted-first'>Uncompleted first</option>
+        {sortValues.map(val => (
+          <option key={val.value} value={val.value} className='bg-slate-100 dark:bg-slate-800'>
+            {val.title}
+          </option>
+        ))}
       </select>
     </div>
   );

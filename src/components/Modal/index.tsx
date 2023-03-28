@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Task } from '../../interfaces';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { modalActions } from '../../store/ModalStore';
 import { tasksActions } from '../../store/TasksStore';
 
 const ModalContent: React.FC = () => {
   const dispatch = useAppDispatch();
+  const directories = useAppSelector(state => state.tasks.directories);
 
   const titleInputRef = useRef<HTMLInputElement>(null);
   const descriptionTextRef = useRef<HTMLTextAreaElement>(null);
@@ -15,6 +16,7 @@ const ModalContent: React.FC = () => {
   const isDateValid = useRef<Boolean>(false);
 
   const [isImportant, setIsImportant] = useState<boolean>(false);
+  const [selectedDirectory, setSelectedDirectory] = useState<string>(directories[0]);
 
   const today: Date = new Date();
   let day: number = today.getDate();
@@ -39,7 +41,7 @@ const ModalContent: React.FC = () => {
     if (isTitleValid.current && isDateValid.current) {
       const newTask: Task = {
         title: titleInputRef.current!.value,
-        dir: 'Home',
+        dir: selectedDirectory,
         description: descriptionTextRef.current!.value,
         date: dateInputRef.current!.value,
         completed: false,
@@ -54,10 +56,6 @@ const ModalContent: React.FC = () => {
   const closeModalHandler = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) dispatch(modalActions.closeModalHandler());
   };
-
-  useEffect(() => {
-    console.log(isTitleValid.current);
-  }, [isTitleValid]);
 
   return (
     <>
@@ -77,10 +75,21 @@ const ModalContent: React.FC = () => {
               Description (optional)
               <textarea placeholder='e.g, do the homework' className='w-full' ref={descriptionTextRef}></textarea>
             </label>
+            <label>
+              Select a directory
+              <select className='block w-full' value={selectedDirectory} onChange={({ target }) => setSelectedDirectory(target.value)}>
+                {directories.map((dir: string) => (
+                  <option key={dir} value={dir} className='bg-slate-100 dark:bg-slate-800'>
+                    {dir}
+                  </option>
+                ))}
+              </select>
+            </label>
             <label className='mb-0 flex'>
               <span className='order-1 flex-1'>Mark as important</span>
               <input type='checkbox' className='w-4 h-4 basis-4 mr-2' checked={isImportant} onChange={() => setIsImportant(prev => !prev)} />
             </label>
+            +
             <button type='submit' className='btn mt-5'>
               Add task
             </button>
