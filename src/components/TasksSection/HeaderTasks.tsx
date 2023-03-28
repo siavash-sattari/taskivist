@@ -4,11 +4,15 @@ import BtnAddTask from '../BtnAddTask';
 import { BellIcon, MenuIcon } from '../icons';
 import SearchField from './SearchField';
 import useVisibility from '../../hooks/useVisibility';
+import { useAppDispatch } from '../../store/hooks';
+import { menuActions } from '../../store/MenuStore';
 
 const classHasNotification =
   "after:content-[''] after:w-2 after:h-2 after:bg-rose-500 block after:rounded-full after:absolute after:bottom-3/4  after:left-3/4";
 
 const HeaderTasks: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const refBtnNotification = useRef<HTMLButtonElement>(null);
 
   const date: Date = new Date();
@@ -37,9 +41,13 @@ const HeaderTasks: React.FC = () => {
 
   const { elementIsVisible: notificationIsVisible, showElement: showNotifications } = useVisibility([refBtnNotification.current]);
 
+  const openMenuHandler = () => {
+    dispatch(menuActions.openMenu());
+  };
+
   return (
     <header className='flex items-center'>
-      <button className='mr-6'>
+      <button className='mr-6' onClick={openMenuHandler}>
         <MenuIcon />
       </button>
       <SearchField />
