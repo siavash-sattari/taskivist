@@ -88,7 +88,10 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
     <section>
       <h1 className='font-medium my-8 text-2xl dark:text-slate-200'>{tasksTitle}</h1>
       <ButtonsSort isListInView1={isListInView1} setIsListInView1={setIsListInView1} sortedBy={sortedBy} setSortedBy={setSortedBy} />
-      <ul className={`tasksList mt-4 grid gap-6 ${isListInView1 ? 'grid-cols-1' : 'grid-cols-3 items-end'}`}>
+      <ul
+        className={`tasksList mt-4 grid xl:gap-6 gap-4 ${
+          isListInView1 ? 'grid-cols-1' : 'xl:grid-cols-3 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 items-end'
+        }`}>
         {sortedTasks.map(task => (
           <TaskItem key={task.id} isListInView1={isListInView1} task={task} />
         ))}

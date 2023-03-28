@@ -36,7 +36,7 @@ const AccountData: React.FC = () => {
       {showModal && (
         <ModalConfirm onClose={() => setIsModalShown(false)} text='All the tasks will be deleted permanently.' onConfirm={deleteAllTasksHandler} />
       )}
-      <section className='p-5 bg-slate-100 flex flex-col w-2/12 fixed top-0 right-0 h-screen dark:bg-slate-800/[.5]'>
+      <section className='layoutMenuAccount p-5 xl:top-0 xl:right-0'>
         <span className='flex items-center mx-auto'>
           <span className='font-medium'>Hi, Siavash!</span>
           <img src={require('../../assets/avatar.jpeg')} alt='avatar' className='w-10 rounded-full ml-4' />

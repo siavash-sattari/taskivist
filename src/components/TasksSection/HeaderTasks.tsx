@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Tooltip from '../Tooltip';
 import BtnAddTask from '../BtnAddTask';
-import { BellIcon } from '../icons';
+import { BellIcon, MenuIcon } from '../icons';
 import SearchField from './SearchField';
 import useVisibility from '../../hooks/useVisibility';
 
@@ -36,21 +36,12 @@ const HeaderTasks: React.FC = () => {
   const dateTimeFormat = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}}`;
 
   const { elementIsVisible: notificationIsVisible, showElement: showNotifications } = useVisibility([refBtnNotification.current]);
-  /*
-  const sorted = tasksCopy.sort((task1, task2) => {
-    const date1 = toMillisseconds(task1.date);
-    const date2 = toMillisseconds(task2.date);
-    if (date1 < date2) {
-      return -1;
-    }
-    if (date1 > date2) {
-      return 1;
-    }
-    return 0;
-  });*/
 
   return (
     <header className='flex items-center'>
+      <button className='mr-6'>
+        <MenuIcon />
+      </button>
       <SearchField />
       <time dateTime={dateTimeFormat} className='flex-1 text-center'>
         {todayDate}
