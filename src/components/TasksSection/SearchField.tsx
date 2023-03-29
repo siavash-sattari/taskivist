@@ -10,9 +10,9 @@ const ItemSearch: React.FC<{ task: Task }> = ({ task }) => {
   const dateFormated = useDate(task.date);
   return (
     <li key={task.id} className='py-2'>
-      <Link to='/' className='flex justify-between transition hover:text-rose-500 dark:hover:text-slate-200'>
+      <Link to={`/task/${task.id}`} className='flex justify-between transition hover:text-rose-500 dark:hover:text-slate-200'>
         <span>{task.title}</span>
-        <span className=''>{dateFormated}</span>
+        <span>{dateFormated}</span>
       </Link>
     </li>
   );
