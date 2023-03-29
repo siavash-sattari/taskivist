@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import useDescriptionTitle from '../../hooks/useDescriptionTitle';
 import { Task } from '../../interfaces';
 import { useAppSelector } from '../../store/hooks';
 import LayoutRoutes from '../LayoutRoutes';
@@ -10,6 +11,8 @@ const Directory: React.FC = () => {
 
   const params = useParams();
   const navigate = useNavigate();
+
+  useDescriptionTitle(`Tasks in "${params.dir}"`, params.dir ? params.dir + ' directory' : '');
 
   const [tasksInCurrentDirectory, setTasksInCurrentDirectory] = useState<Task[]>([]);
 

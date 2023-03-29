@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import useDescriptionTitle from '../../hooks/useDescriptionTitle';
 import { Task } from '../../interfaces';
 import { useAppSelector } from '../../store/hooks';
 import LayoutRoutes from '../LayoutRoutes';
@@ -8,7 +9,7 @@ const TaskOnly: React.FC = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const tasks = useAppSelector(state => state.tasks.tasks);
+  const tasks = useAppSelector(store => store.tasks.tasks);
 
   const [matchedTask, setMatchedTask] = useState<Task[]>([]);
 
@@ -21,7 +22,11 @@ const TaskOnly: React.FC = () => {
     setMatchedTask(filteredTask);
   }, [navigate, params.taskId, tasks]);
 
-  return <LayoutRoutes title={`"${matchedTask[0].title}"`} tasks={matchedTask} />;
+  const title = matchedTask.length ? matchedTask[0].title : '';
+
+  useDescriptionTitle(`Searching for ${title}`, 'Task ' + title);
+
+  return <LayoutRoutes title={title} tasks={matchedTask} />;
 };
 
 export default TaskOnly;
