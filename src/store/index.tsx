@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import tasksReducer from './TasksStore';
+import tasksReducer, { tasksMiddleware } from './TasksStore';
 import modalReducer from './ModalStore';
 import menuReducer from './MenuStore';
 
 const store = configureStore({
-  reducer: { tasks: tasksReducer, modal: modalReducer, menu: menuReducer }
+  reducer: { tasks: tasksReducer, modal: modalReducer, menu: menuReducer },
+  middleware: (getDefaultMiddleware: any) => getDefaultMiddleware().concat(tasksMiddleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;
