@@ -17,7 +17,7 @@ const ActionsTaskItem: React.FC<Props> = ({ task, isListInView1 }) => {
           isListInView1 ? 'items-center' : 'border-t-2 w-full pt-4 mt-4'
         }`}>
         <BtnToggleCompleted taskCompleted={task.completed} taskId={task.id} isListInView1={isListInView1} />
-        <BtnMarkAsImportant task={task} />
+        <BtnMarkAsImportant taskId={task.id} taskImportant={task.important} />
         <BtnDeleteTask taskId={task.id} />
         <BtnEditTask task={task} />
       </div>
