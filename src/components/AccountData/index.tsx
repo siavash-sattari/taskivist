@@ -91,7 +91,7 @@ const AccountData: React.FC = () => {
               </ul>
             </div>
           )}
-          <button className='mt-auto text-left pt-4' onClick={() => setIsModalShown(true)}>
+          <button className='mt-auto text-left pt-4 hover:text-rose-600 dark:hover:text-slate-200 transition ' onClick={() => setIsModalShown(true)}>
             Delete all tasks
           </button>
           <a

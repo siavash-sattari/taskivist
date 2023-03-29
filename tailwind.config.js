@@ -5,11 +5,11 @@ module.exports = {
     extend: {
       colors: {
         slate: {
-          800: '#162033'
+          800: '#141E33'
         }
       }
     }
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
   darkMode: 'class'
 };

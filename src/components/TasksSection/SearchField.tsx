@@ -52,7 +52,7 @@ const SearchField: React.FC = () => {
   }, [closeListResults, searchInputValue, showListResults]);
 
   return (
-    <form className='flex-1 relative'>
+    <form className='flex-2 relative col-span-3 row-start-2'>
       <label htmlFor='search' className='sr-only'></label>
       <input
         type='search'
@@ -63,7 +63,7 @@ const SearchField: React.FC = () => {
         onChange={({ target }) => setSearchInputValue(target.value)}
         className='inputStyles w-full'
       />
-      <SearchIcon className='absolute w-5 right-4 top-3.5 text-slate-400' />
+      <SearchIcon className='absolute w-4 sm:w-5 right-4 top-3.5 text-slate-400' />
       {listResultsVisible && (
         <div className='absolute bg-slate-100 rounded-md w-full top-14 p-3 dark:bg-slate-800 z-10'>
           {tasks.length ? (
