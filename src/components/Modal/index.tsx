@@ -5,9 +5,10 @@ import { CloseIcon } from '../icons';
 type Props = {
   children: React.ReactNode;
   onClose: () => void;
+  title: string;
 };
 
-const ModalContent: React.FC<Props> = ({ children, onClose }) => {
+const ModalContent: React.FC<Props> = ({ children, onClose, title }) => {
   const closeModalHandler = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -22,6 +23,7 @@ const ModalContent: React.FC<Props> = ({ children, onClose }) => {
         <button aria-label='close alert' className='absolute right-3 sm:right-4' onClick={onClose}>
           <CloseIcon />
         </button>
+        <h2 className='font-medium mb-5 text-lg md:text-2xl'>{title}</h2>
         {children}
       </section>
     </div>
@@ -30,8 +32,8 @@ const ModalContent: React.FC<Props> = ({ children, onClose }) => {
 
 const modalElement = document.getElementById('modal')! as HTMLElement;
 
-const Modal: React.FC<Props> = ({ children, onClose }) => {
-  return ReactDOM.createPortal(<ModalContent children={children} onClose={onClose} />, modalElement);
+const Modal: React.FC<Props> = ({ children, onClose, title }) => {
+  return ReactDOM.createPortal(<ModalContent children={children} onClose={onClose} title={title} />, modalElement);
 };
 
 export default Modal;

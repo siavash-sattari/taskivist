@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import Tooltip from '../Tooltip';
 import BtnAddTask from '../BtnAddTask';
 import { BellIcon, MenuIcon } from '../icons';
 import SearchField from './SearchField';
@@ -50,7 +49,7 @@ const HeaderTasks: React.FC = () => {
 
   return (
     <header className='sm:flex items-center grid grid-cols-3 gap-4 sm:gap-0'>
-      <button className='mr-6 block xl:hidden' onClick={openMenuHeaderHandler}>
+      <button className='mr-6 block xl:hidden' onClick={openMenuHeaderHandler} title='open menu'>
         <MenuIcon />
       </button>
       <SearchField />
@@ -60,11 +59,9 @@ const HeaderTasks: React.FC = () => {
       </div>
       <div className='flex flex-2'>
         <div className='sm:mr-4 md:mr-6 ml-auto grid place-items-center relative'>
-          <Tooltip txt='see notifications'>
-            <button ref={refBtnNotification} onClick={showNotifications} className={`relative ${classHasNotification}`}>
-              <BellIcon className='fill-violet-600 w-5 h-5 md:w-6 md:h-6 dark:fill-violet-800' />
-            </button>
-          </Tooltip>
+          <button ref={refBtnNotification} onClick={showNotifications} className={`relative ${classHasNotification}`} title='see notifications'>
+            <BellIcon className='fill-violet-600 w-5 h-5 md:w-6 md:h-6 dark:fill-violet-800' />
+          </button>
           {notificationIsVisible && (
             <ul className='absolute bg-slate-100 dark:bg-slate-800 top-full rounded-md right-0 p-3 w-max border border-slate-300 dark:border-slate-700'>
               <li>my notification 1</li>

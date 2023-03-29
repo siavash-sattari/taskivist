@@ -9,7 +9,7 @@ type Props = {
 };
 
 const sortValues = [
-  { value: "order-added", title: "Order added" },
+  { value: 'order-added', title: 'Order added' },
   { value: 'min-date', title: 'New' },
   { value: 'max-date', title: 'Last' },
   { value: 'completed-first', title: 'Completed first' },
@@ -19,10 +19,10 @@ const sortValues = [
 const ButtonsSort: React.FC<Props> = ({ isListInView1, setIsListInView1, sortedBy, setSortedBy }) => {
   return (
     <div className='flex children-styles'>
-      <button onClick={() => setIsListInView1(true)}>
+      <button onClick={() => setIsListInView1(true)} title='view in list'>
         <ViewIcon1 className={isListInView1 ? 'text-violet-600' : ''} />
       </button>
-      <button onClick={() => setIsListInView1(false)}>
+      <button onClick={() => setIsListInView1(false)} title='view in grid'>
         <ViewIcon2 className={!isListInView1 ? 'text-violet-600' : ''} />
       </button>
       <select className='ml-auto inputStyles' value={sortedBy} onChange={({ target }) => setSortedBy(target.value)}>
