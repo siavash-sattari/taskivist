@@ -22,7 +22,9 @@ const BtnToggleCompleted: React.FC<Props> = ({ taskCompleted, taskId }) => {
         className={`${taskCompleted ? 'bg-emerald-200 text-emerald-800 ' : 'bg-yellow-100 text-yellow-700 '} rounded-full font-medium`}
         onClick={() => toggleTaskCompleted(taskId)}>
         <span className='block py-1 px-3 absolute invisible sm:static sm:visible'>{taskCompleted ? 'completed' : 'uncompleted'}</span>
-        <span className='p-1 block sm:hidden'>{taskCompleted ? <CheckIcon className='w-3 h-3' /> : <CloseIcon className='w-3 h-3' />}</span>
+        <span className=' sm:hidden w-6 h-6 grid place-items-center'>
+          {taskCompleted ? <CheckIcon className='w-3 h-3' /> : <CloseIcon className='w-3 h-3' />}
+        </span>
       </button>
     </Tooltip>
   );
