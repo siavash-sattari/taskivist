@@ -52,16 +52,17 @@ const SearchField: React.FC = () => {
   }, [closeListResults, searchInputValue, showListResults]);
 
   return (
-    <form className='basis-1/3 relative col-span-3 row-start-2'>
+    <form className='basis-1/3 relative col-span-3 row-start-2' autoComplete='off'>
       <label htmlFor='search' className='sr-only'></label>
       <input
         type='search'
         id='search'
         placeholder='Search task'
         ref={searchResultsRef}
-        value={searchInputValue}
-        onChange={({ target }) => setSearchInputValue(target.value)}
         className='inputStyles w-full'
+        onKeyUp={({ currentTarget }) => {
+          setSearchInputValue(currentTarget.value);
+        }}
       />
       <SearchIcon className='absolute w-4 sm:w-5 right-4 top-3.5 text-slate-400' />
       {listResultsVisible && (
@@ -80,7 +81,7 @@ const SearchField: React.FC = () => {
               </button>
             </>
           ) : (
-            <span>No tasks found</span>
+            <span>No tasks found - {searchInputValue}</span>
           )}
         </div>
       )}
