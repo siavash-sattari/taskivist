@@ -30,7 +30,7 @@ const LayoutRoutes: React.FC<Props> = ({ title, tasks }) => {
       <ButtonsSort isListInView1={isListInView1} setIsListInView1={setIsListInView1} sortedBy={sortedBy} setSortedBy={setSortedBy} />
       <ul
         className={`tasksList mt-4 grid gap-2 sm:gap-4 xl:gap-6 ${
-          isListInView1 ? 'grid-cols-1' : 'xl:grid-cols-3 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 items-end'
+          isListInView1 ? 'grid-cols-1' : '2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 items-end'
         }`}>
         {sortedTasks.map(task => (
           <TaskItem key={task.id} isListInView1={isListInView1} task={task} />
