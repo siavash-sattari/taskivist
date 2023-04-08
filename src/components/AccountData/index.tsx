@@ -25,8 +25,9 @@ const AccountData: React.FC = () => {
         <TasksDone />
         <DeleteTasks />
         <a
-          href='/'
-          className='mt-4 bg-rose-100 p-2 rounded-md text-rose-600 text-center transition hover:bg-rose-200 dark:bg-slate-700/[.3] dark:text-slate-200'>
+          target='_blank'
+          href='https://github.com/siavash-sattari'
+          className='mt-4 bg-rose-100 p-2 rounded-md text-rose-600 text-center transition hover:bg-rose-200 dark:bg-slate-700/[.3] dark:text-slate-200' rel="noreferrer">
           Projected by Siavash Sattari
         </a>
       </section>
