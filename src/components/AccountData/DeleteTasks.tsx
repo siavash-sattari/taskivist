@@ -8,17 +8,17 @@ const DeleteTasks: React.FC = () => {
 
   const [showModal, setIsModalShown] = useState<boolean>(false);
 
-  const deleteAllTasksHandler = () => {
-    dispatch(tasksActions.deleteAllTasks());
+  const deleteAllDataHandler = () => {
+    dispatch(tasksActions.deleteAllData());
   };
 
   return (
     <>
       {showModal && (
-        <ModalConfirm onClose={() => setIsModalShown(false)} text='All the tasks will be deleted permanently.' onConfirm={deleteAllTasksHandler} />
+        <ModalConfirm onClose={() => setIsModalShown(false)} text='All data will be deleted permanently.' onConfirm={deleteAllDataHandler} />
       )}
       <button className='mt-auto text-left pt-4 hover:text-rose-600 dark:hover:text-slate-200 transition ' onClick={() => setIsModalShown(true)}>
-        Delete all tasks
+        Delete all data
       </button>
     </>
   );

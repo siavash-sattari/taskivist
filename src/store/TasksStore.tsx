@@ -59,8 +59,9 @@ const tasksSlice = createSlice({
       const currTask = state.tasks.find(task => task.id === taskId)!;
       currTask.completed = !currTask.completed;
     },
-    deleteAllTasks(state) {
+    deleteAllData(state) {
       state.tasks = [];
+      state.directories = ['Main'];
     },
     createDirectory(state, action: PayloadAction<string>) {
       const newDirectory: string = action.payload;
@@ -103,9 +104,26 @@ export const tasksMiddleware = (store: any) => (next: any) => (action: any) => {
     const tasksList = store.getState().tasks.tasks;
     localStorage.setItem('tasks', JSON.stringify(tasksList));
   }
+
   if (action.type.startsWith('tasks/') && isADirectoryAction) {
     const dirList = store.getState().tasks.directories;
     localStorage.setItem('directories', JSON.stringify(dirList));
   }
+
+  if (tasksActions.deleteAllData.match(action)) {
+    localStorage.removeItem('tasks');
+    localStorage.removeItem('directories');
+    localStorage.removeItem('darkmode');
+  }
+
+  if (tasksActions.removeTask.match(action)) {
+    if (localStorage.getItem('tasks')) {
+      const localStorageTasks = JSON.parse(localStorage.getItem('tasks')!);
+      if (localStorageTasks.length === 0) {
+        localStorage.removeItem('tasks');
+      }
+    }
+  }
+
   return nextAction;
 };
