@@ -10,7 +10,7 @@ type Props = {
 
 const DoneTasks: React.FC<Props> = ({ done, title }) => {
   const tasks = useAppSelector(state => state.tasks.tasks);
-  const tasksDone = useCompletedTasks({ tasks, done });
+  const { tasks: tasksDone } = useCompletedTasks({ tasks, done });
 
   useDescriptionTitle('All tasks done', title);
 
