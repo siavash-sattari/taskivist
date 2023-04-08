@@ -19,7 +19,7 @@ const ModalDirectory: React.FC<Props> = ({ onClose, dirName, onConfirm, btnText,
   const checkDirNameExists = (val: string) => {
     const directoryDoesNotExist = directories.every((dir: string) => dir !== val);
 
-    if (directoryDoesNotExist) {
+    if (directoryDoesNotExist || dirName === val) {
       setErrorDirectoryName(false);
     } else {
       setErrorDirectoryName(true);

@@ -55,7 +55,7 @@ const ItemDirectory: React.FC<Props> = ({ dir, classActive }) => {
           text='This directory and all its tasks will be deleted.'
         />
       )}
-      <li className={`flex items-center pr-4 pl-9 py-2 itemDirectory ${currentPath === '/' + dir ? classActive : ''}`}>
+      <li className={`flex items-center pr-4 pl-9 py-2 itemDirectory ${currentPath === '/dir/' + dir ? classActive : ''}`}>
         <NavLink
           to={`/dir/${dir}`}
           title={dir}
