@@ -14,8 +14,8 @@ const links = [
     path: '/important'
   },
   {
-    name: 'Tasks done',
-    path: '/done'
+    name: 'Completed tasks',
+    path: '/completed'
   },
   {
     name: 'Uncompleted tasks',
