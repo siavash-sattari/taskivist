@@ -1,4 +1,4 @@
-# 📅 Tasks App (To-Do List)
+# 📅 Taskivist (To-Do List)
 
 To-do list website made with React JS, Tailwind CSS, TypeScript, Redux Toolkit and more.
 
