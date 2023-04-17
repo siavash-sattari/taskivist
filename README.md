@@ -1,6 +1,6 @@
 # 📅 Taskivist (To-Do List)
 
-To-do list website made with React JS, Tailwind CSS, TypeScript, Redux Toolkit and more.
+![taskivist](https://user-images.githubusercontent.com/88406720/232632362-1094a860-66d1-4ed3-b2b0-fe8002032a55.JPG)
 
 ## Description
 
